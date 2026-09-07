@@ -1,0 +1,79 @@
+name: Validate Skills
+
+on:
+  push:
+    paths:
+      - 'skills/**/SKILL.md'
+  pull_request:
+    paths:
+      - 'skills/**/SKILL.md'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate SKILL.md structure
+        run: |
+          echo "Validating SKILL.md files..."
+          errors=0
+          for skill_dir in skills/*/; do
+            skill_file="${skill_dir}SKILL.md"
+            if [ ! -f "$skill_file" ]; then
+              echo "ERROR: Missing SKILL.md in $skill_dir"
+              errors=$((errors + 1))
+              continue
+            fi
+
+            # Check required frontmatter fields
+            for field in name description version author; do
+              if ! grep -q "^${field}:" "$skill_file"; then
+                echo "ERROR: Missing '${field}' in frontmatter of $skill_file"
+                errors=$((errors + 1))
+              fi
+            done
+
+            # Check that SKILL.md has content (not just frontmatter)
+            content_lines=$(sed -n '/^---$/,/^---$/!p' "$skill_file" | wc -l)
+            if [ "$content_lines" -lt 5 ]; then
+              echo "WARNING: SKILL.md in $skill_dir has less than 5 lines of content"
+            fi
+
+            echo "✓ $skill_dir validated"
+          done
+
+          if [ $errors -gt 0 ]; then
+            echo "Validation failed with $errors errors"
+            exit 1
+          fi
+
+          echo "All skills validated successfully"
+
+      - name: Check for hardcoded secrets
+        run: |
+          echo "Checking for hardcoded secrets..."
+          # Common patterns for API keys
+          patterns=(
+            "nvapi-"
+            "sk-"
+            "token.*=.*[A-Za-z0-9]{20,}"
+            "api_key.*=.*[A-Za-z0-9]{20,}"
+            "password.*=.*[A-Za-z0-9]{8,}"
+          )
+
+          found=0
+          for pattern in "${patterns[@]}"; do
+            matches=$(grep -r "$pattern" skills/ --include="*.py" --include="*.sh" --include="*.md" 2>/dev/null | grep -v ".env.example" || true)
+            if [ -n "$matches" ]; then
+              echo "WARNING: Potential hardcoded secret found:"
+              echo "$matches"
+              found=$((found + 1))
+            fi
+          done
+
+          if [ $found -gt 0 ]; then
+            echo "Warning: $found potential secrets found (check .env.example files)"
+          else
+            echo "✓ No hardcoded secrets found"
+          fi

@@ -1,0 +1,67 @@
+{
+  "name": "eco",
+  "models": [
+    {
+      "id": "eco-model-01-oc-nemotron-3-ultra-free",
+      "kind": "model",
+      "model": "oc/nemotron-3-ultra-free",
+      "providerId": "opencode",
+      "weight": 0
+    },
+    {
+      "id": "eco-model-02-auto-gemini",
+      "kind": "model",
+      "model": "auto/gemini",
+      "providerId": "auto",
+      "weight": 0
+    },
+    {
+      "id": "eco-model-03-oc-nemotron-3.5-lightning-free",
+      "kind": "model",
+      "model": "oc/nemotron-3.5-lightning-free",
+      "providerId": "opencode",
+      "weight": 0
+    },
+    {
+      "id": "eco-model-04-oc-mimo-v2.5-free",
+      "kind": "model",
+      "model": "oc/mimo-v2.5-free",
+      "providerId": "opencode",
+      "weight": 0
+    },
+    {
+      "id": "eco-model-05-oc-big-pickle",
+      "kind": "model",
+      "model": "oc/big-pickle",
+      "providerId": "opencode",
+      "weight": 0
+    },
+    {
+      "id": "eco-model-06-oc-hy3-free",
+      "kind": "model",
+      "model": "oc/hy3-free",
+      "providerId": "opencode",
+      "weight": 0
+    }
+  ],
+  "strategy": "priority",
+  "config": {
+    "maxRetries": 1,
+    "retryDelayMs": 2000,
+    "handoffThreshold": 0.85,
+    "handoffModel": "",
+    "maxMessagesForSummary": 30,
+    "trackMetrics": true,
+    "reasoningTokenBufferEnabled": true,
+    "zeroLatencyOptimizationsEnabled": false
+  },
+  "id": "0ca67700-be56-4553-a25c-d3906920bd8a",
+  "isHidden": false,
+  "sortOrder": 2,
+  "createdAt": "2026-08-26T14:23:08.417Z",
+  "updatedAt": "2026-08-27T10:58:03.380Z",
+  "version": 2,
+  "repairNote": "[db-health:2026-08-26T14:49:13.588Z] 1 missing connection pin(s) cleared.",
+  "isActive": true,
+  "computed_context_length": 200000
+}
