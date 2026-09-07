@@ -1,6 +1,8 @@
 ---
 name: tts-voice-cloning
 description: Use when cloning a voice or generating speech locally — XTTS-v2 (Coqui) for natural French, VibeVoice for long-form/multi-speaker.
+version: 1.0.0
+author: searching-murphy
 ---
 
 # Local TTS + Voice Cloning (XTTS-v2 + VibeVoice)
