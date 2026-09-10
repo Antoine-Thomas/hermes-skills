@@ -8,8 +8,6 @@ Ce dépôt contient des skills prêts à l'emploi pour Hermes Agent. Chaque skil
 
 [![Vidéo 1 - Introduction à Hermes Agent](https://youtube.com)](https://youtu.be/7CbnMTcFTO0?si=LkZjJXZKy2tNptOy)
 
-
-
 ## Skills disponibles
 
 | Skill | Description | Catégorie |
