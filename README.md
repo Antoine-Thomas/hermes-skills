@@ -6,7 +6,8 @@ Collection de skills Hermes Agent pour l'automatisation vidéo, l'IA gratuite et
 
 Ce dépôt contient des skills prêts à l'emploi pour Hermes Agent. Chaque skill est autonome et documenté.
 
-[![Vidéo 1 - Introduction à Hermes Agent](https://youtube.com)](https://youtu.be)
+[![Vidéo 1 - Introduction à Hermes Agent](https://youtube.com)](https://www.youtube.com/watch?v=7CbnMTcFTO0&list=PLY1SdvljQl4E_)
+
 
 
 ## Skills disponibles
